@@ -27,7 +27,11 @@ export default function Home() {
   }, [randomTip, currentTipId]);
 
   const handleGetNewTip = () => {
-    getRandomTip.mutate();
+    getRandomTip.mutate(undefined, {
+      onSuccess: (newTip) => {
+        setCurrentTipId(newTip.id);
+      }
+    });
   };
 
   // Keyboard shortcuts
