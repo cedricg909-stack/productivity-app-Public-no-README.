@@ -187,6 +187,136 @@ export class MemStorage implements IStorage {
         text: "Implement the 3-2-1 backup rule: 3 copies of data, 2 on different media, 1 offsite.",
         category: "Technology"
       },
+      // More Time Management Tips
+      {
+        text: "Time-box your tasks: Assign specific durations to activities to prevent them from expanding unnecessarily.",
+        category: "Time Management"
+      },
+      {
+        text: "Use the Getting Things Done (GTD) method: Capture everything in a trusted system and regularly review.",
+        category: "Time Management"
+      },
+      {
+        text: "Apply Parkinson's Law: Set tighter deadlines to force yourself to work more efficiently.",
+        category: "Time Management"
+      },
+      {
+        text: "Schedule your most important work during your peak energy hours.",
+        category: "Time Management"
+      },
+      // More Planning Tips
+      {
+        text: "Use the SMART criteria for goal setting: Specific, Measurable, Achievable, Relevant, Time-bound.",
+        category: "Planning"
+      },
+      {
+        text: "Plan your week every Sunday: Set priorities and prepare for upcoming challenges.",
+        category: "Planning"
+      },
+      {
+        text: "Create project roadmaps to visualize timelines and dependencies.",
+        category: "Planning"
+      },
+      {
+        text: "Use backward planning: Start with your deadline and work backwards to create milestones.",
+        category: "Planning"
+      },
+      {
+        text: "Conduct regular planning reviews to adjust strategies based on what's working.",
+        category: "Planning"
+      },
+      // More Focus & Concentration Tips
+      {
+        text: "Use the Forest app or similar tools to gamify staying off your phone during work.",
+        category: "Focus & Concentration"
+      },
+      {
+        text: "Practice single-tasking: Focus on one task at a time for better quality results.",
+        category: "Focus & Concentration"
+      },
+      {
+        text: "Create environmental cues for focus: Use specific music, lighting, or workspace setups.",
+        category: "Focus & Concentration"
+      },
+      {
+        text: "Apply the 90-minute rule: Work in focused sprints aligned with your natural attention cycles.",
+        category: "Focus & Concentration"
+      },
+      {
+        text: "Use the 'Do Not Disturb' mode on all devices during important work sessions.",
+        category: "Focus & Concentration"
+      },
+      // More Efficiency Tips
+      {
+        text: "Create and use email templates for common responses to save time.",
+        category: "Efficiency"
+      },
+      {
+        text: "Use the ABCDE method: Prioritize tasks by consequences (A=must do, E=eliminate).",
+        category: "Efficiency"
+      },
+      {
+        text: "Implement the one-touch rule: Handle emails and documents only once when possible.",
+        category: "Efficiency"
+      },
+      {
+        text: "Use voice-to-text software to speed up writing and note-taking.",
+        category: "Efficiency"
+      },
+      {
+        text: "Master touch typing to increase your writing speed by 30-50%.",
+        category: "Efficiency"
+      },
+      // More Wellness Tips
+      {
+        text: "Follow the 20-20-20 rule: Every 20 minutes, look at something 20 feet away for 20 seconds.",
+        category: "Wellness"
+      },
+      {
+        text: "Stay hydrated: Keep a water bottle at your desk and drink regularly throughout the day.",
+        category: "Wellness"
+      },
+      {
+        text: "Practice the 4-7-8 breathing technique for quick stress relief and focus.",
+        category: "Wellness"
+      },
+      {
+        text: "Take walking meetings when possible to combine exercise with work discussions.",
+        category: "Wellness"
+      },
+      {
+        text: "Maintain good posture and ergonomics to prevent long-term health issues.",
+        category: "Wellness"
+      },
+      {
+        text: "Establish boundaries between work and personal time to prevent burnout.",
+        category: "Wellness"
+      },
+      // More Organization Tips
+      {
+        text: "Implement the PARA method: Projects, Areas, Resources, Archive for digital organization.",
+        category: "Organization"
+      },
+      {
+        text: "Use the 'two-minute rule': If it takes less than two minutes, do it now instead of adding to your list.",
+        category: "Organization"
+      },
+      {
+        text: "Create a designated inbox for all incoming tasks, ideas, and documents.",
+        category: "Organization"
+      },
+      {
+        text: "Organize your digital files with consistent naming conventions and folder structures.",
+        category: "Organization"
+      },
+      {
+        text: "Conduct weekly reviews to clean up your workspace and systems.",
+        category: "Organization"
+      },
+      {
+        text: "Use color-coding systems for different types of tasks or projects.",
+        category: "Organization"
+      },
     ];
 
     sampleTips.forEach((tip, index) => {

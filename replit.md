@@ -1,6 +1,6 @@
 # Overview
 
-This is a Productivity Tips Pro application - a full-stack web application that displays and manages productivity tips. The app allows users to browse tips by category, search for specific tips, favorite tips, and add new tips. It features a modern glassmorphism design with a React frontend and Express.js backend, using PostgreSQL for data persistence.
+This is a Productivity Tips Pro application - a full-stack web application that displays and manages productivity tips. The app allows users to browse tips by category, search for specific tips, favorite tips, and add new tips. It features a modern glassmorphism design with a React frontend and Express.js backend, using in-memory storage for development. The application now contains over 50 comprehensive productivity tips across 8 categories including Leadership, Technology, Time Management, Planning, Focus & Concentration, Efficiency, Wellness, and Organization.
 
 # User Preferences
 
