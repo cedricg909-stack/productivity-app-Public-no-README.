@@ -10,18 +10,18 @@ export function useTips() {
   });
 
   const randomTipQuery = useQuery<Tip>({
-    queryKey: ["/api/tips/random"],
+    queryKey: ["/api/random-tip"],
     refetchInterval: false,
     refetchOnWindowFocus: false,
   });
 
   const getRandomTip = useMutation({
     mutationFn: async () => {
-      const response = await apiRequest("GET", "/api/tips/random");
+      const response = await apiRequest("GET", "/api/random-tip");
       return response.json();
     },
     onSuccess: (data) => {
-      queryClient.setQueryData(["/api/tips/random"], data);
+      queryClient.setQueryData(["/api/random-tip"], data);
       queryClient.invalidateQueries({ queryKey: ["/api/stats"] });
     },
   });

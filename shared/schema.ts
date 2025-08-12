@@ -7,18 +7,18 @@ export const tips = pgTable("tips", {
   id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
   text: text("text").notNull(),
   category: text("category").notNull(),
-  views: integer("views").default(0),
-  favorites: integer("favorites").default(0),
-  rating: integer("rating").default(0), // Store as integer (rating * 10) for precision
+  views: integer("views").default(0).notNull(),
+  favorites: integer("favorites").default(0).notNull(),
+  rating: integer("rating").default(0).notNull(), // Store as integer (rating * 10) for precision
   createdAt: timestamp("created_at").default(sql`now()`),
 });
 
 export const userStats = pgTable("user_stats", {
   id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
-  dailyTips: integer("daily_tips").default(0),
-  streak: integer("streak").default(0),
-  totalTips: integer("total_tips").default(0),
-  favoritesCount: integer("favorites_count").default(0),
+  dailyTips: integer("daily_tips").default(0).notNull(),
+  streak: integer("streak").default(0).notNull(),
+  totalTips: integer("total_tips").default(0).notNull(),
+  favoritesCount: integer("favorites_count").default(0).notNull(),
   lastActive: timestamp("last_active").default(sql`now()`),
 });
 
@@ -31,7 +31,7 @@ export const favorites = pgTable("favorites", {
 export const categories = pgTable("categories", {
   id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
   name: text("name").notNull().unique(),
-  count: integer("count").default(0),
+  count: integer("count").default(0).notNull(),
 });
 
 export const insertTipSchema = createInsertSchema(tips).omit({

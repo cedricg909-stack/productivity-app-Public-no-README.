@@ -54,7 +54,7 @@ export function TipCard({ tip, isFavorited, onFavoriteToggle, onNewTip, isLoadin
           </div>
           <div className="flex items-center space-x-2 text-gray-600">
             <Star className="w-4 h-4 text-yellow-500" />
-            <span>{(tip.rating / 10).toFixed(1)} rating</span>
+            <span>{((tip.rating ?? 0) / 10).toFixed(1)} rating</span>
           </div>
         </div>
 

@@ -53,7 +53,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       
       // Update user daily tips count
       const stats = await storage.getUserStats();
-      await storage.updateUserStats({ dailyTips: stats.dailyTips + 1 });
+      await storage.updateUserStats({ dailyTips: (stats.dailyTips ?? 0) + 1 });
       
       res.json(tip);
     } catch (error) {
@@ -133,7 +133,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // Get random tip
-  app.get("/api/tips/random", async (req, res) => {
+  app.get("/api/random-tip", async (req, res) => {
     try {
       const tips = await storage.getTips();
       if (tips.length === 0) {
@@ -147,7 +147,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       
       // Update user daily tips count
       const stats = await storage.getUserStats();
-      await storage.updateUserStats({ dailyTips: stats.dailyTips + 1 });
+      await storage.updateUserStats({ dailyTips: (stats.dailyTips ?? 0) + 1 });
       
       res.json(randomTip);
     } catch (error) {

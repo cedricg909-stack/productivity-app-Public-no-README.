@@ -113,6 +113,80 @@ export class MemStorage implements IStorage {
         text: "Practice deep work: Set aside uninterrupted time for your most complex tasks.",
         category: "Focus & Concentration"
       },
+      // Leadership Tips
+      {
+        text: "Lead by example: Demonstrate the behaviors and work ethic you expect from your team.",
+        category: "Leadership"
+      },
+      {
+        text: "Practice active listening: Give team members your full attention and ask clarifying questions.",
+        category: "Leadership"
+      },
+      {
+        text: "Provide specific, constructive feedback regularly rather than waiting for formal reviews.",
+        category: "Leadership"
+      },
+      {
+        text: "Delegate effectively: Match tasks to team members' strengths and provide clear expectations.",
+        category: "Leadership"
+      },
+      {
+        text: "Recognize and celebrate team achievements publicly to boost morale and motivation.",
+        category: "Leadership"
+      },
+      {
+        text: "Make data-driven decisions: Use metrics and analytics to guide your team's direction.",
+        category: "Leadership"
+      },
+      {
+        text: "Foster psychological safety: Create an environment where team members feel safe to share ideas and concerns.",
+        category: "Leadership"
+      },
+      {
+        text: "Invest in your team's growth: Provide learning opportunities and career development support.",
+        category: "Leadership"
+      },
+      // Technology Tips
+      {
+        text: "Use keyboard shortcuts to navigate your favorite apps 50% faster than using a mouse.",
+        category: "Technology"
+      },
+      {
+        text: "Set up automated backups for all important files to prevent data loss disasters.",
+        category: "Technology"
+      },
+      {
+        text: "Learn to use version control systems like Git to track changes and collaborate effectively.",
+        category: "Technology"
+      },
+      {
+        text: "Use password managers to generate and store unique, strong passwords for all accounts.",
+        category: "Technology"
+      },
+      {
+        text: "Automate repetitive tasks with tools like IFTTT, Zapier, or simple scripts.",
+        category: "Technology"
+      },
+      {
+        text: "Keep your software updated to benefit from security patches and new features.",
+        category: "Technology"
+      },
+      {
+        text: "Use cloud storage services for seamless file access across all your devices.",
+        category: "Technology"
+      },
+      {
+        text: "Learn basic command line operations to perform tasks more efficiently than GUI alternatives.",
+        category: "Technology"
+      },
+      {
+        text: "Use dual monitors or ultrawide displays to increase your screen real estate and multitasking ability.",
+        category: "Technology"
+      },
+      {
+        text: "Implement the 3-2-1 backup rule: 3 copies of data, 2 on different media, 1 offsite.",
+        category: "Technology"
+      },
     ];
 
     sampleTips.forEach((tip, index) => {
@@ -130,7 +204,7 @@ export class MemStorage implements IStorage {
       // Update category counts
       const category = Array.from(this.categories.values()).find(c => c.name === tip.category);
       if (category) {
-        category.count++;
+        category.count = (category.count || 0) + 1;
       }
     });
 
@@ -180,14 +254,14 @@ export class MemStorage implements IStorage {
   async updateTipViews(id: string): Promise<void> {
     const tip = this.tips.get(id);
     if (tip) {
-      tip.views = (tip.views || 0) + 1;
+      tip.views = (tip.views ?? 0) + 1;
     }
   }
 
   async updateTipFavorites(id: string, increment: boolean): Promise<void> {
     const tip = this.tips.get(id);
     if (tip) {
-      tip.favorites = (tip.favorites || 0) + (increment ? 1 : -1);
+      tip.favorites = (tip.favorites ?? 0) + (increment ? 1 : -1);
     }
   }
 
@@ -224,7 +298,7 @@ export class MemStorage implements IStorage {
   }
 
   async getCategories(): Promise<Category[]> {
-    return Array.from(this.categories.values()).sort((a, b) => b.count - a.count);
+    return Array.from(this.categories.values()).sort((a, b) => (b.count ?? 0) - (a.count ?? 0));
   }
 
   async createCategory(insertCategory: InsertCategory): Promise<Category> {
@@ -242,7 +316,7 @@ export class MemStorage implements IStorage {
   async updateCategoryCount(name: string, increment: boolean): Promise<void> {
     const category = Array.from(this.categories.values()).find(c => c.name === name);
     if (category) {
-      category.count += increment ? 1 : -1;
+      category.count = (category.count ?? 0) + (increment ? 1 : -1);
     }
   }
 

@@ -64,7 +64,7 @@ export function CategorySidebar({
               <span className="font-medium">All Tips</span>
             </div>
             <span className="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-full">
-              {categories?.reduce((sum, cat) => sum + cat.count, 0) || 0}
+              {categories?.reduce((sum, cat) => sum + (cat.count ?? 0), 0) || 0}
             </span>
           </Button>
           
