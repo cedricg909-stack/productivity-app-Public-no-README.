@@ -1,20 +1,1036 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Fira+Code:wght@300..700&family=Geist+Mono:wght@100..900&family=Geist:wght@100..900&family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400..700;1,400..700&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Outfit:wght@100..900&family=Oxanium:wght@200..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100..900;1,100..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&family=Space+Grotesk:wght@300..700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-  </head>
-  <body>
-    <h1>Hello</h1>
-    <p>Productivity tips</p>
-    <div id="root"></div>
-        <!-- This is a replit script which adds a banner on the top of the page when opened in development mode outside the replit environment -->
-      </body>
-<<<<<<< HEAD
-</html>>
-=======
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productivity Tips</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noiseFilter)" opacity="0.05"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grain)"/></svg>') repeat;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .floating-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .floating-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(1px);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-circle:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-circle:nth-child(2) {
+            width: 120px;
+            height: 120px;
+            top: 20%;
+            right: 10%;
+            animation-delay: -2s;
+        }
+
+        .floating-circle:nth-child(3) {
+            width: 60px;
+            height: 60px;
+            bottom: 20%;
+            left: 20%;
+            animation-delay: -4s;
+        }
+
+        .floating-circle:nth-child(4) {
+            width: 100px;
+            height: 100px;
+            bottom: 30%;
+            right: 20%;
+            animation-delay: -1s;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) translateX(0px) rotate(0deg); }
+            25% { transform: translateY(-20px) translateX(10px) rotate(1deg); }
+            50% { transform: translateY(-10px) translateX(-5px) rotate(-1deg); }
+            75% { transform: translateY(-15px) translateX(5px) rotate(0.5deg); }
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 24px;
+            padding: 50px;
+            box-shadow: 
+                0 32px 64px rgba(0, 0, 0, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            max-width: 700px;
+            width: 100%;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            position: relative;
+            z-index: 10;
+        }
+
+        .container:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 
+                0 48px 80px rgba(0, 0, 0, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.4);
+        }
+
+        .header {
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .title {
+            color: #fff;
+            font-size: 3.5em;
+            font-weight: 800;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #fff 0%, rgba(255,255,255,0.8) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            letter-spacing: -0.02em;
+            position: relative;
+        }
+
+        .title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
+            border-radius: 2px;
+        }
+
+        .subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.2em;
+            font-weight: 400;
+            letter-spacing: 0.3px;
+            margin-bottom: 25px;
+        }
+
+        .header-stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 25px;
+            flex-wrap: wrap;
+        }
+
+        .header-stat {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 18px;
+            padding: 15px 25px;
+            text-align: center;
+            transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-stat::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .header-stat:hover::before {
+            left: 100%;
+        }
+
+        .header-stat:hover {
+            transform: translateY(-3px) scale(1.05);
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.35);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .header-stat-number {
+            display: block;
+            font-size: 1.8em;
+            font-weight: 700;
+            color: white;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 2;
+        }
+
+        .header-stat-label {
+            font-size: 0.85em;
+            color: rgba(255, 255, 255, 0.8);
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin-top: 5px;
+            font-weight: 500;
+            position: relative;
+            z-index: 2;
+        }
+
+        .category-highlight {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 20px;
+            margin-top: 25px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .category-highlight:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .category-highlight h3 {
+            color: rgba(255, 255, 255, 0.95);
+            font-size: 1.1em;
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .categories-preview {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .category-chip {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+            color: rgba(255, 255, 255, 0.9);
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            font-weight: 500;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .category-chip:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: scale(1.05);
+            color: white;
+        }
+
+        .tip-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px 0;
+            min-height: 180px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tip-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .tip-container:hover::before {
+            left: 100%;
+        }
+
+        .tip-container:hover {
+            transform: translateY(-2px);
+            box-shadow: 
+                0 30px 60px rgba(0, 0, 0, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.9);
+        }
+
+        .tip-text {
+            font-size: 1.4em;
+            line-height: 1.7;
+            color: #2d3748;
+            font-weight: 500;
+            opacity: 0;
+            animation: tipSlideIn 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        @keyframes tipSlideIn {
+            0% {
+                opacity: 0;
+                transform: translateY(30px) scale(0.95);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .category-tag {
+            display: inline-block;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.15), rgba(118, 75, 162, 0.15));
+            color: #5a67d8;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 0.9em;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 1px solid rgba(102, 126, 234, 0.2);
+            position: relative;
+            z-index: 2;
+            transition: all 0.3s ease;
+        }
+
+        .category-tag:hover {
+            transform: scale(1.05);
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.25), rgba(118, 75, 162, 0.25));
+        }
+
+        .btn-container {
+            margin-top: 40px;
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .tip-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 16px 32px;
+            font-size: 1.1em;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+            box-shadow: 
+                0 8px 25px rgba(102, 126, 234, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+            min-width: 140px;
+        }
+
+        .tip-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .tip-btn:hover::before {
+            left: 100%;
+        }
+
+        .tip-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 
+                0 15px 35px rgba(102, 126, 234, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        }
+
+        .tip-btn:active {
+            transform: translateY(-1px) scale(1.02);
+        }
+
+        .secondary-btn {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: rgba(255, 255, 255, 0.95);
+        }
+
+        .secondary-btn:hover {
+            background: rgba(255, 255, 255, 0.25);
+            color: white;
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+
+        .categories-container {
+            margin-top: 30px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            display: none;
+            animation: slideIn 0.5s ease forwards;
+        }
+
+        .categories-container.show {
+            display: block;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .categories-title {
+            color: rgba(255, 255, 255, 0.95);
+            font-size: 1.3em;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+            max-height: 400px;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+
+        .categories-grid::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .categories-grid::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+        }
+
+        .categories-grid::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 3px;
+        }
+
+        .category-btn {
+            background: rgba(255, 255, 255, 0.95);
+            color: #2d3748;
+            border: none;
+            padding: 15px 20px;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+            font-weight: 500;
+            font-size: 0.95em;
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .category-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+            transition: left 0.4s ease;
+        }
+
+        .category-btn:hover::before {
+            left: 100%;
+        }
+
+        .category-btn:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.2);
+            background: rgba(255, 255, 255, 1);
+        }
+
+        .category-btn .category-name {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #4a5568;
+        }
+
+        .category-btn .category-count {
+            font-size: 0.85em;
+            color: #718096;
+        }
+
+        .toggle-categories-btn {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.25);
+            color: rgba(255, 255, 255, 0.95);
+        }
+
+        .toggle-categories-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+
+        .close-categories {
+            background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9em;
+            font-weight: 500;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .close-categories:hover {
+            transform: scale(1.05);
+            background: linear-gradient(135deg, #ff5252, #ff7575);
+        }
+
+        .tip-counter {
+            margin-top: 30px;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1em;
+            font-weight: 500;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 12px 24px;
+            border-radius: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            display: inline-block;
+        }
+
+        .stats-container {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 30px;
+            gap: 20px;
+        }
+
+        .stat-item {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 15px 20px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            flex: 1;
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .stat-number {
+            display: block;
+            font-size: 1.8em;
+            font-weight: 700;
+            color: white;
+        }
+
+        .stat-label {
+            font-size: 0.8em;
+            color: rgba(255, 255, 255, 0.7);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 25px;
+                margin: 10px;
+            }
+            
+            .title {
+                font-size: 2.5em;
+            }
+            
+            .tip-text {
+                font-size: 1.2em;
+            }
+
+            .btn-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .tip-btn {
+                width: 100%;
+                max-width: 280px;
+            }
+
+            .stats-container {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-elements">
+        <div class="floating-circle"></div>
+        <div class="floating-circle"></div>
+        <div class="floating-circle"></div>
+        <div class="floating-circle"></div>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <h1 class="title">💡 Productivity Hub</h1>
+            <p class="subtitle">Transform your efficiency with expert strategies</p>
+            
+            <div class="header-stats">
+                <div class="header-stat">
+                    <span class="header-stat-number">120</span>
+                    <span class="header-stat-label">Total Tips</span>
+                </div>
+                <div class="header-stat">
+                    <span class="header-stat-number">14</span>
+                    <span class="header-stat-label">Categories</span>
+                </div>
+                <div class="header-stat">
+                    <span class="header-stat-number">8.5</span>
+                    <span class="header-stat-label">Avg per Category</span>
+                </div>
+            </div>
+
+            <div class="category-highlight">
+                <h3>🎯 Focus Areas Available</h3>
+                <div class="categories-preview" id="categoriesPreview">
+                    <!-- Categories will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+        
+        <div class="tip-container">
+            <div class="category-tag" id="categoryTag" style="display: none;">General</div>
+            <div class="tip-text" id="tipText">Ready to unlock your productivity potential? Click below for your first expert tip!</div>
+        </div>
+        
+        <div class="btn-container">
+            <button class="tip-btn" onclick="showRandomTip()">🎲 Random Tip</button>
+            <button class="tip-btn secondary-btn" onclick="showTipByCategory()">🎯 Random Category</button>
+            <button class="tip-btn toggle-categories-btn" onclick="toggleCategories()">📋 Browse Categories</button>
+        </div>
+
+        <div class="categories-container" id="categoriesContainer">
+            <h3 class="categories-title">Choose a Category</h3>
+            <div class="categories-grid" id="categoriesGrid">
+                <!-- Categories will be populated by JavaScript -->
+            </div>
+            <button class="close-categories" onclick="toggleCategories()">Close Categories</button>
+        </div>
+        
+        <div class="stats-container">
+            <div class="stat-item">
+                <span class="stat-number" id="tipCounter">0</span>
+                <span class="stat-label">Tips Viewed</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" id="categoryCounter">0</span>
+                <span class="stat-label">Categories</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">120</span>
+                <span class="stat-label">Total Tips</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const tips = [
+            // Time Management
+            { text: "Use the Pomodoro Technique: Work for 25 minutes, then take a 5-minute break.", category: "Time Management" },
+            { text: "Time-block your calendar by assigning specific time slots to different activities.", category: "Time Management" },
+            { text: "Batch similar tasks together to maintain focus and reduce context switching.", category: "Time Management" },
+            { text: "Use the 'Swiss cheese' method: Poke holes in large tasks by working on small parts.", category: "Time Management" },
+            { text: "Track your time for a week to identify where you're actually spending it.", category: "Time Management" },
+            { text: "Set artificial deadlines that are earlier than the real ones.", category: "Time Management" },
+            { text: "Use the 'Next Action' principle: Always define the very next physical action needed.", category: "Time Management" },
+            { text: "Apply Parkinson's Law: Give yourself less time to complete tasks.", category: "Time Management" },
+            { text: "Schedule buffer time between meetings to avoid running late.", category: "Time Management" },
+            { text: "Use the 'touch it once' rule: Handle emails and documents completely when you open them.", category: "Time Management" },
+
+            // Planning & Goal Setting
+            { text: "Start your day by completing your most important task first (Eat the Frog).", category: "Planning" },
+            { text: "Keep a daily to-do list and prioritize tasks using the Eisenhower Matrix.", category: "Planning" },
+            { text: "Practice the art of saying 'no' to commitments that don't align with your priorities.", category: "Planning" },
+            { text: "Set specific, measurable goals with deadlines to stay motivated.", category: "Planning" },
+            { text: "Plan your week every Sunday and your day every evening before.", category: "Planning" },
+            { text: "Use the MoSCoW method: Must have, Should have, Could have, Won't have.", category: "Planning" },
+            { text: "Create a 'not-to-do' list of activities that waste your time.", category: "Planning" },
+            { text: "Set quarterly OKRs (Objectives and Key Results) to maintain long-term focus.", category: "Planning" },
+            { text: "Use backward planning: Start with your deadline and work backwards.", category: "Planning" },
+            { text: "Break large projects into smaller, actionable milestones.", category: "Planning" },
+
+            // Focus & Deep Work
+            { text: "Minimize distractions by turning off non-essential notifications during work hours.", category: "Focus" },
+            { text: "Practice deep work: Set aside uninterrupted time for your most complex tasks.", category: "Focus" },
+            { text: "Use website blockers during focused work sessions.", category: "Focus" },
+            { text: "Try the 52-17 rule: Work for 52 minutes, break for 17 minutes.", category: "Focus" },
+            { text: "Create a shutdown ritual to mentally transition between work and personal time.", category: "Focus" },
+            { text: "Use noise-cancelling headphones or white noise to maintain concentration.", category: "Focus" },
+            { text: "Practice single-tasking: Focus on one task at a time.", category: "Focus" },
+            { text: "Set your phone to airplane mode during deep work sessions.", category: "Focus" },
+            { text: "Use the 'phone in another room' technique to reduce temptation.", category: "Focus" },
+            { text: "Create a focus ritual: Same time, same place, same preparation.", category: "Focus" },
+
+            // Efficiency & Optimization
+            { text: "Use keyboard shortcuts to save time on repetitive tasks.", category: "Efficiency" },
+            { text: "Use the 2-minute rule: If a task takes less than 2 minutes, do it immediately.", category: "Efficiency" },
+            { text: "Use the 80/20 rule: Focus on the 20% of tasks that produce 80% of results.", category: "Efficiency" },
+            { text: "Learn text expansion tools to avoid typing common phrases repeatedly.", category: "Efficiency" },
+            { text: "Use the 'Three strikes' rule: If you do something three times, automate it.", category: "Efficiency" },
+            { text: "Create standard operating procedures (SOPs) for recurring tasks.", category: "Efficiency" },
+            { text: "Use the 'Good enough' principle: Don't over-optimize low-impact tasks.", category: "Efficiency" },
+            { text: "Optimize your commute by listening to audiobooks or podcasts.", category: "Efficiency" },
+            { text: "Use voice-to-text tools for faster note-taking and writing.", category: "Efficiency" },
+            { text: "Create email templates for common responses.", category: "Efficiency" },
+
+            // Organization & Systems
+            { text: "Keep a notebook handy to capture ideas and thoughts throughout the day.", category: "Organization" },
+            { text: "Use templates and checklists for recurring processes to ensure consistency.", category: "Organization" },
+            { text: "Implement a 'Getting Things Done' (GTD) capture system for all inputs.", category: "Organization" },
+            { text: "Use a consistent file naming convention for digital documents.", category: "Organization" },
+            { text: "Clean your workspace every evening before leaving.", category: "Organization" },
+            { text: "Use the 'one-minute pickup' rule: Tidy up for just one minute regularly.", category: "Organization" },
+            { text: "Create designated places for everything and always return items there.", category: "Organization" },
+            { text: "Use color-coding systems for different types of tasks or projects.", category: "Organization" },
+            { text: "Maintain a master project list with all current commitments.", category: "Organization" },
+            { text: "Use cloud storage for seamless access to files across devices.", category: "Organization" },
+
+            // Communication & Email
+            { text: "Schedule time for email checking instead of constantly monitoring your inbox.", category: "Communication" },
+            { text: "Use the BRIEF method for emails: Brief, Relevant, Informative, Engaging, Friendly.", category: "Communication" },
+            { text: "Set up email filters and labels to automatically organize incoming messages.", category: "Communication" },
+            { text: "Use the 'Two-minute email rule': Respond immediately if it takes less than two minutes.", category: "Communication" },
+            { text: "Write shorter emails with clear action items and deadlines.", category: "Communication" },
+            { text: "Use scheduling tools to avoid back-and-forth when setting meetings.", category: "Communication" },
+            { text: "Create an email signature with your contact info and common links.", category: "Communication" },
+            { text: "Use 'Reply vs Reply All' mindfully to reduce inbox clutter for others.", category: "Communication" },
+            { text: "Set specific communication hours and let others know your availability.", category: "Communication" },
+            { text: "Use video calls for complex discussions instead of long email threads.", category: "Communication" },
+
+            // Health & Wellness
+            { text: "Take regular breaks to prevent burnout and maintain mental clarity.", category: "Wellness" },
+            { text: "Take care of your physical health - exercise regularly and get adequate sleep.", category: "Wellness" },
+            { text: "Use the 20-20-20 rule: Every 20 minutes, look at something 20 feet away for 20 seconds.", category: "Wellness" },
+            { text: "Stay hydrated by keeping a water bottle at your desk.", category: "Wellness" },
+            { text: "Take walking meetings for casual discussions.", category: "Wellness" },
+            { text: "Practice mindfulness or meditation for 5-10 minutes daily.", category: "Wellness" },
+            { text: "Eat healthy snacks to maintain energy levels throughout the day.", category: "Wellness" },
+            { text: "Get natural sunlight exposure, especially in the morning.", category: "Wellness" },
+            { text: "Use a standing desk or take standing breaks every hour.", category: "Wellness" },
+            { text: "Practice good posture to prevent back and neck strain.", category: "Wellness" },
+
+            // Technology & Tools
+            { text: "Use productivity apps and tools, but don't let them become distractions themselves.", category: "Technology" },
+            { text: "Automate recurring tasks wherever possible to free up mental energy.", category: "Technology" },
+            { text: "Use password managers to save time and improve security.", category: "Technology" },
+            { text: "Set up IFTTT or Zapier automations for routine digital tasks.", category: "Technology" },
+            { text: "Use calendar apps with smart scheduling features.", category: "Technology" },
+            { text: "Leverage AI tools for writing, research, and brainstorming.", category: "Technology" },
+            { text: "Use project management tools to track progress and collaborate.", category: "Technology" },
+            { text: "Set up automatic backups for important files and documents.", category: "Technology" },
+            { text: "Use clipboard managers to access previously copied text.", category: "Technology" },
+            { text: "Learn advanced features of your most-used software applications.", category: "Technology" },
+
+            // Habits & Routines
+            { text: "Set up morning and evening routines to bookend your day with structure.", category: "Habits" },
+            { text: "Create deadlines for yourself, even for tasks that don't have external deadlines.", category: "Habits" },
+            { text: "Use habit stacking: Attach new habits to existing ones.", category: "Habits" },
+            { text: "Practice the 'Two-day rule': Never miss a habit two days in a row.", category: "Habits" },
+            { text: "Start with tiny habits that are almost impossible to fail.", category: "Habits" },
+            { text: "Use implementation intentions: 'When X happens, I will do Y.'", category: "Habits" },
+            { text: "Track your habits visually with a simple calendar or app.", category: "Habits" },
+            { text: "Create environmental cues that trigger productive behaviors.", category: "Habits" },
+            { text: "Use the 'Seinfeld strategy': Don't break the chain of daily practice.", category: "Habits" },
+            { text: "Reward yourself for maintaining good habits consistently.", category: "Habits" },
+
+            // Leadership & Teamwork
+            { text: "Learn to delegate tasks that others can do better or more efficiently.", category: "Leadership" },
+            { text: "Give specific, actionable feedback rather than vague comments.", category: "Leadership" },
+            { text: "Hold regular one-on-ones to stay connected with your team.", category: "Leadership" },
+            { text: "Lead by example: Demonstrate the productivity habits you want to see.", category: "Leadership" },
+            { text: "Create psychological safety for team members to share ideas and concerns.", category: "Leadership" },
+            { text: "Use the 'Yes, and...' principle to build on others' ideas.", category: "Leadership" },
+            { text: "Set clear expectations and success metrics for team projects.", category: "Leadership" },
+            { text: "Practice active listening in meetings and conversations.", category: "Leadership" },
+            { text: "Celebrate small wins and progress, not just final results.", category: "Leadership" },
+            { text: "Ask 'How can I help?' instead of just assigning more tasks.", category: "Leadership" },
+
+            // Learning & Growth
+            { text: "Learn continuously - invest time in developing new skills and knowledge.", category: "Learning" },
+            { text: "Use the Feynman Technique: Explain concepts in simple terms to solidify understanding.", category: "Learning" },
+            { text: "Set aside time for deliberate practice of key skills.", category: "Learning" },
+            { text: "Read for 30 minutes daily in your field or areas of interest.", category: "Learning" },
+            { text: "Keep a learning journal to track insights and progress.", category: "Learning" },
+            { text: "Find a mentor or coach to accelerate your development.", category: "Learning" },
+            { text: "Teach others what you learn to reinforce your own knowledge.", category: "Learning" },
+            { text: "Attend conferences, workshops, or online courses regularly.", category: "Learning" },
+            { text: "Join professional communities and engage in discussions.", category: "Learning" },
+            { text: "Experiment with new approaches and tools regularly.", category: "Learning" },
+
+            // Environment & Workspace
+            { text: "Create a dedicated workspace that's organized and free from clutter.", category: "Environment" },
+            { text: "Use good lighting to reduce eye strain and improve mood.", category: "Environment" },
+            { text: "Keep your workspace at a comfortable temperature for optimal focus.", category: "Environment" },
+            { text: "Add plants to your workspace to improve air quality and reduce stress.", category: "Environment" },
+            { text: "Use ergonomic furniture to prevent physical discomfort.", category: "Environment" },
+            { text: "Minimize visual distractions in your immediate work area.", category: "Environment" },
+            { text: "Create different spaces for different types of work when possible.", category: "Environment" },
+            { text: "Use scents like peppermint or citrus to boost alertness.", category: "Environment" },
+            { text: "Keep healthy snacks and water easily accessible.", category: "Environment" },
+            { text: "Personalize your space with meaningful items that motivate you.", category: "Environment" },
+
+            // Motivation & Mindset
+            { text: "Use visualization techniques to imagine successful task completion.", category: "Motivation" },
+            { text: "Create accountability partnerships with colleagues or friends.", category: "Motivation" },
+            { text: "Set up rewards for completing challenging or important tasks.", category: "Motivation" },
+            { text: "Use positive self-talk and affirmations to maintain confidence.", category: "Motivation" },
+            { text: "Focus on progress, not perfection, to maintain momentum.", category: "Motivation" },
+            { text: "Connect your daily tasks to your bigger purpose and values.", category: "Motivation" },
+            { text: "Use the 'fresh start effect': Leverage new beginnings for motivation.", category: "Motivation" },
+            { text: "Practice gratitude to maintain a positive outlook.", category: "Motivation" },
+            { text: "Set up visual reminders of your goals and why they matter.", category: "Motivation" },
+            { text: "Join or create a mastermind group for mutual support and accountability.", category: "Motivation" },
+
+            // Reflection & Continuous Improvement
+            { text: "Review and reflect on your day each evening to identify areas for improvement.", category: "Reflection" },
+            { text: "Conduct weekly reviews to assess progress and adjust plans.", category: "Reflection" },
+            { text: "Keep a decision journal to track the outcomes of important choices.", category: "Reflection" },
+            { text: "Ask yourself 'What went well?' and 'What could be better?' regularly.", category: "Reflection" },
+            { text: "Do monthly retrospectives on your productivity systems and habits.", category: "Reflection" },
+            { text: "Seek feedback from others on your work and communication style.", category: "Reflection" },
+            { text: "Track metrics that matter for your goals and review them regularly.", category: "Reflection" },
+            { text: "Practice the 'Pre-mortem' technique: Imagine failure and plan prevention.", category: "Reflection" },
+            { text: "Keep a 'lessons learned' log for projects and experiences.", category: "Reflection" },
+            { text: "Schedule quarterly 'life audits' to assess overall direction and satisfaction.", category: "Reflection" }
+        ];
+
+        let tipCount = 0;
+        let currentTipIndex = -1;
+        let categoryMode = false;
+        let viewedCategories = new Set();
+        let categoriesVisible = false;
+        const categories = [...new Set(tips.map(tip => tip.category))];
+
+        // Category icons mapping
+        const categoryIcons = {
+            'Time Management': '⏰',
+            'Planning': '📋',
+            'Focus': '🎯',
+            'Efficiency': '⚡',
+            'Organization': '🗂️',
+            'Communication': '💬',
+            'Wellness': '🌱',
+            'Technology': '💻',
+            'Habits': '🔄',
+            'Leadership': '👥',
+            'Learning': '📚',
+            'Environment': '🏢',
+            'Motivation': '🚀',
+            'Reflection': '🤔'
+        };
+
+        function initializeCategories() {
+            const categoriesGrid = document.getElementById('categoriesGrid');
+            const categoriesPreview = document.getElementById('categoriesPreview');
+            
+            categoriesGrid.innerHTML = '';
+            categoriesPreview.innerHTML = '';
+            
+            categories.forEach(category => {
+                const categoryTips = tips.filter(tip => tip.category === category);
+                const icon = categoryIcons[category] || '📌';
+                
+                // Create category button for the grid
+                const categoryBtn = document.createElement('button');
+                categoryBtn.className = 'category-btn';
+                categoryBtn.onclick = () => showCategoryTip(category);
+                categoryBtn.innerHTML = `
+                    <span class="category-name">${icon} ${category}</span>
+                    <span class="category-count">${categoryTips.length} tips available</span>
+                `;
+                categoriesGrid.appendChild(categoryBtn);
+                
+                // Create category chip for the header preview
+                const categoryChip = document.createElement('div');
+                categoryChip.className = 'category-chip';
+                categoryChip.textContent = `${icon} ${category}`;
+                categoryChip.onclick = () => showCategoryTip(category);
+                categoriesPreview.appendChild(categoryChip);
+            });
+        }
+
+        function toggleCategories() {
+            const container = document.getElementById('categoriesContainer');
+            categoriesVisible = !categoriesVisible;
+            
+            if (categoriesVisible) {
+                container.classList.add('show');
+                if (!container.innerHTML.includes('category-btn')) {
+                    initializeCategories();
+                }
+            } else {
+                container.classList.remove('show');
+            }
+        }
+
+        function showCategoryTip(category) {
+            const categoryTips = tips.filter(tip => tip.category === category);
+            const randomTip = categoryTips[Math.floor(Math.random() * categoryTips.length)];
+            
+            displayTip(randomTip);
+            toggleCategories(); // Close the categories panel
+        }
+
+        function showRandomTip() {
+            categoryMode = false;
+            let randomIndex;
+            do {
+                randomIndex = Math.floor(Math.random() * tips.length);
+            } while (randomIndex === currentTipIndex && tips.length > 1);
+            
+            currentTipIndex = randomIndex;
+            displayTip(tips[randomIndex]);
+        }
+
+        function showTipByCategory() {
+            const randomCategory = categories[Math.floor(Math.random() * categories.length)];
+            const categoryTips = tips.filter(tip => tip.category === randomCategory);
+            const randomTip = categoryTips[Math.floor(Math.random() * categoryTips.length)];
+            
+            categoryMode = true;
+            displayTip(randomTip);
+        }
+
+        function displayTip(tip) {
+            const tipText = document.getElementById('tipText');
+            const categoryTag = document.getElementById('categoryTag');
+            const tipCounter = document.getElementById('tipCounter');
+            const categoryCounter = document.getElementById('categoryCounter');
+
+            // Add to viewed categories
+            viewedCategories.add(tip.category);
+
+            // Reset animation
+            tipText.style.animation = 'none';
+            tipText.offsetHeight; // Trigger reflow
+            tipText.style.animation = 'tipSlideIn 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards';
+
+            tipText.textContent = tip.text;
+            
+            // Add icon to category tag
+            const icon = categoryIcons[tip.category] || '📌';
+            categoryTag.textContent = `${icon} ${tip.category}`;
+            categoryTag.style.display = 'inline-block';
+
+            tipCount++;
+            tipCounter.textContent = tipCount;
+            categoryCounter.textContent = viewedCategories.size;
+
+            // Add pulse effect to stats
+            [tipCounter, categoryCounter].forEach(counter => {
+                counter.style.transform = 'scale(1.2)';
+                counter.style.transition = 'transform 0.3s ease';
+                setTimeout(() => {
+                    counter.style.transform = 'scale(1)';
+                }, 300);
+            });
+        }
+
+        // Initialize categories when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeCategories();
+        });
+
+        // Show first tip automatically after page load
+        setTimeout(() => {
+            showRandomTip();
+        }, 1200);
+    </script>
+</body>
 </html>
->>>>>>> e4615ee (Changed index.html)
